@@ -104,7 +104,7 @@ python eval_act.py \
 ```
 
 
-> **注意**：模型 checkpoint 文件（~600MB/个）未包含在仓库中，需运行训练命令自行生成。训练完成后 checkpoint 会自动保存到 `results/` 目录。
+> **注意**：模型 checkpoint 文件（~600MB/个）未包含在仓库中，获取方式二选一：① 运行上方训练命令自行生成；② 见 [report.md](report.md) 附录 B 的网盘链接下载。
 
 ## 项目结构
 
@@ -130,5 +130,6 @@ hw3task2/
     ├── l1_curve.png
     └── zeroshot_comparison.png
 ```
+
 
 
