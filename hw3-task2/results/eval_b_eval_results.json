@@ -1,0 +1,15 @@
+{
+  "avg_l1": 0.19430821023881437,
+  "per_dim_l1": {
+    "x": 0.1725122417602688,
+    "y": 0.15931140452623369,
+    "z": 0.15658789349719882,
+    "roll": 0.10478453371673822,
+    "pitch": 0.1265035412274301,
+    "yaw": 0.17531754564493895,
+    "gripper": 0.4651403184130322
+  },
+  "num_batches": 200,
+  "data_root": "/root/autodl-tmp/calvin-lerobot/splitD_v30",
+  "model_path": "/root/autodl-tmp/hw3_outputs/model_b/checkpoint_010000.pt"
+}
