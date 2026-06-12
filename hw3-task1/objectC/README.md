@@ -1,8 +1,8 @@
 # Object C Package
 
-这个目录保留物体 C 的 Magic123 相关配置、启动脚本和兼容性代码。
-
 ## Files
+
+- [`source_media/cup.png`](source_media/cup.png)：物体 C 生成使用的原始杯子图片。
 
 ### Configs
 
@@ -19,8 +19,3 @@
 ### Code
 
 - [`code/zero123_guidance.py`](code/zero123_guidance.py)：为当前环境做过兼容调整的 Zero123 guidance 实现。
-
-## Notes
-
-- 仓库中不包含输入图片、checkpoint、mesh、预览图、视频、指标曲线和 W&B 导出文件。
-- 完整复现仍需要在本地或服务器准备 threestudio、基础模型权重和运行环境。

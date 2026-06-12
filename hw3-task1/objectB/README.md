@@ -1,7 +1,5 @@
 # Object B Package
 
-这个目录保留物体 B 的 threestudio 配置、导出相关代码和复现说明。
-
 ## Files
 
 ### Configs
@@ -18,7 +16,3 @@
 ### Notes
 
 - [`ENV_AND_REPRO.md`](ENV_AND_REPRO.md)：环境与复现说明。
-
-## Notes
-
-- 仓库中不包含物体 B 的最终 mesh、预览图、视频、checkpoint 和 W&B 导出文件。
