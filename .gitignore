@@ -1,0 +1,20 @@
+hw3-task1-weights/
+
+# Task 1 local-only outputs and large artifacts
+hw3-task1/background/input_sparse/
+hw3-task1/background/reconstruction/
+hw3-task1/fusion/inputs/
+hw3-task1/fusion/outputs/
+hw3-task1/objectA/data/
+hw3-task1/objectA/evaluation/
+hw3-task1/objectA/figures/
+hw3-task1/objectA/mesh/
+hw3-task1/objectA/model/
+hw3-task1/objectA/*实验报告.*
+hw3-task1/objectB/results/
+hw3-task1/objectB/wandb/
+hw3-task1/objectC/input/
+hw3-task1/objectC/metrics/
+hw3-task1/objectC/report_assets/
+hw3-task1/objectC/results/
+hw3-task1/objectC/wandb/

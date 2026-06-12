@@ -1,0 +1,31 @@
+name: gsserver
+channels:
+  - nvidia
+  - pytorch
+  - conda-forge
+dependencies:
+  - python=3.10
+  - cuda-nvcc=12.4
+  - cuda-cudart-dev=12.4
+  - pip
+  - pip:
+      - --extra-index-url https://download.pytorch.org/whl/cu124
+      - torch==2.5.1+cu124
+      - torchvision==0.20.1+cu124
+      - torchaudio==2.5.1+cu124
+      - numpy
+      - opencv-python
+      - pillow
+      - tqdm
+      - plyfile
+      - open3d==0.19.0
+      - trimesh
+      - scikit-image
+      - matplotlib
+      - mediapy
+      - lpips
+      - imageio
+      - imageio-ffmpeg
+      - ninja
+      - swanlab==0.8.0
+      - swanboard==0.1.10b2

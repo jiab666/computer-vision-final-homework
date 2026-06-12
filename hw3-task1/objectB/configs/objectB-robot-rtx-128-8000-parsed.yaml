@@ -1,0 +1,123 @@
+name: objectB-robot-rtx-128
+description: ''
+tag: a_simple_toy_robot,_full_body,_one_round_head,_one_box-shaped_torso,_two_short_arms,_two_short_legs,_standing_upright,_front-facing,_perfectly_symmetrical,_isolated,_centered,_plain_studio_background,_3d_toy_figurine
+seed: 0
+use_timestamp: true
+timestamp: '@20260606-234928'
+exp_root_dir: /root/autodl-tmp/outputs
+exp_dir: /root/autodl-tmp/outputs/objectB-robot-rtx-128
+trial_name: a_simple_toy_robot,_full_body,_one_round_head,_one_box-shaped_torso,_two_short_arms,_two_short_legs,_standing_upright,_front-facing,_perfectly_symmetrical,_isolated,_centered,_plain_studio_background,_3d_toy_figurine@20260606-234928
+trial_dir: /root/autodl-tmp/outputs/objectB-robot-rtx-128/a_simple_toy_robot,_full_body,_one_round_head,_one_box-shaped_torso,_two_short_arms,_two_short_legs,_standing_upright,_front-facing,_perfectly_symmetrical,_isolated,_centered,_plain_studio_background,_3d_toy_figurine@20260606-234928
+n_gpus: 1
+resume: /root/autodl-tmp/outputs/objectB-robot-rtx-128/a_simple_toy_robot,_full_body,_one_round_head,_one_box-shaped_torso,_two_short_arms,_two_short_legs,_standing_upright,_front-facing,_perfectly_symmetrical,_isolated,_centered,_plain_studio_background,_3d_toy_figurine@20260606-224646/ckpts/last.ckpt
+data_type: random-camera-datamodule
+data:
+  batch_size: 1
+  width: 128
+  height: 128
+  eval_width: 320
+  eval_height: 320
+  eval_batch_size: 1
+  n_val_views: 1
+  n_test_views: 8
+  camera_distance_range:
+  - 1.35
+  - 1.65
+  fovy_range:
+  - 38
+  - 50
+  elevation_range:
+  - -5
+  - 20
+  light_sample_strategy: dreamfusion
+  eval_camera_distance: 1.5
+  eval_fovy_deg: 45.0
+system_type: dreamfusion-system
+system:
+  geometry_type: implicit-volume
+  geometry:
+    radius: 2.0
+    normal_type: analytic
+    density_bias: blob_magic3d
+    density_activation: softplus
+    density_blob_scale: 9.0
+    density_blob_std: 0.4
+    pos_encoding_config:
+      otype: ProgressiveBandHashGrid
+      n_levels: 16
+      n_features_per_level: 2
+      log2_hashmap_size: 19
+      base_resolution: 16
+      per_level_scale: 1.5
+      start_level: 4
+      start_step: 200
+      update_steps: 200
+  material_type: diffuse-with-point-light-material
+  material:
+    ambient_only_steps: 400
+    albedo_activation: sigmoid
+  background_type: neural-environment-map-background
+  background:
+    color_activation: sigmoid
+  renderer_type: nerf-volume-renderer
+  renderer:
+    radius: 2.0
+    num_samples_per_ray: 256
+  prompt_processor_type: stable-diffusion-prompt-processor
+  prompt_processor:
+    pretrained_model_name_or_path: /root/autodl-tmp/models/stable-diffusion-v1-5
+    prompt: a simple toy robot, full body, one round head, one box-shaped torso, two
+      short arms, two short legs, standing upright, front-facing, perfectly symmetrical,
+      isolated, centered, plain studio background, 3d toy figurine
+    negative_prompt: blurry, deformed, asymmetrical, extra limbs, extra heads, cropped,
+      floating parts, sphere, blob, ball, amorphous, smoke, messy silhouette, human,
+      animal
+    spawn: false
+    use_cache: true
+  guidance_type: stable-diffusion-guidance
+  guidance:
+    pretrained_model_name_or_path: /root/autodl-tmp/models/stable-diffusion-v1-5
+    guidance_scale: 100.0
+    weighting_strategy: sds
+    min_step_percent: 0.02
+    max_step_percent: 0.98
+    enable_sequential_cpu_offload: true
+    enable_attention_slicing: true
+  loggers:
+    wandb:
+      enable: true
+      project: cv-hw3-objectb
+      name: robot-rtx-128-sds-8000
+  loss:
+    lambda_sds: 1.0
+    lambda_orient:
+    - 0
+    - 50.0
+    - 500.0
+    - 2000
+    lambda_sparsity: 0.15
+    lambda_opaque: 0.01
+  optimizer:
+    name: Adam
+    args:
+      lr: 0.003
+      betas:
+      - 0.9
+      - 0.99
+      eps: 1.0e-15
+    params:
+      geometry:
+        lr: 0.003
+      background:
+        lr: 0.0003
+trainer:
+  max_steps: 8000
+  log_every_n_steps: 1
+  num_sanity_val_steps: 0
+  val_check_interval: 100
+  enable_progress_bar: true
+  precision: 16-mixed
+checkpoint:
+  save_last: true
+  save_top_k: -1
+  every_n_train_steps: 500
